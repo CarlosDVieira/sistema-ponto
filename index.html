@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PontoFácil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- TELA DE CADASTRO -->
+  <div class="screen active" id="screen-cadastro">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="card">
+      <div class="logo">⏱ PontoFácil</div>
+      <h1>Cadastro</h1>
+      <p class="subtitle">Crie sua conta para registrar seu ponto</p>
+      <div class="form-group">
+        <label>Nome completo</label>
+        <input type="text" id="cad-nome" placeholder="Ex: Carlos Vieira"/>
+      </div>
+      <div class="form-group">
+        <label>Cargo</label>
+        <input type="text" id="cad-cargo" placeholder="Ex: Desenvolvedor"/>
+      </div>
+      <div class="form-group">
+        <label>Matrícula</label>
+        <input type="text" id="cad-matricula" placeholder="Ex: 00123"/>
+      </div>
+      <button class="btn-primary" onclick="cadastrar()">Criar conta →</button>
+      <p class="link-text">Já tem conta? <a href="#" onclick="irPara('screen-login')">Entrar</a></p>
+      <p class="aviso">⚠️ Dados não são salvos — apenas sessão atual</p>
+    </div>
+  </div>
+
+  <!-- TELA DE LOGIN -->
+  <div class="screen" id="screen-login">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="card">
+      <div class="logo">⏱ PontoFácil</div>
+      <h1>Entrar</h1>
+      <p class="subtitle">Acesse com sua matrícula</p>
+      <div class="form-group">
+        <label>Matrícula</label>
+        <input type="text" id="login-matricula" placeholder="Ex: 00123"/>
+      </div>
+      <button class="btn-primary" onclick="login()">Entrar →</button>
+      <p class="link-text">Não tem conta? <a href="#" onclick="irPara('screen-cadastro')">Cadastrar</a></p>
+    </div>
+  </div>
+
+  <!-- TELA DE PONTO -->
+  <div class="screen" id="screen-ponto">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+
+    <header class="topbar">
+      <div class="logo small">⏱ PontoFácil</div>
+      <div class="user-info">
+        <span id="user-nome-top"></span>
+        <button class="btn-sair" onclick="sair()">Sair</button>
+      </div>
+    </header>
+
+    <div class="ponto-wrapper">
+      <div class="ponto-card">
+        <div class="data-hoje" id="data-hoje"></div>
+        <div class="relogio" id="relogio"></div>
+
+        <div class="status-badge" id="status-badge">Sem registro hoje</div>
+
+        <div class="botoes-ponto">
+          <button class="btn-ponto entrada" id="btn-entrada" onclick="registrarPonto('entrada')">
+            <span class="icon">▶</span> Entrada
+          </button>
+          <button class="btn-ponto saida" id="btn-saida" onclick="registrarPonto('saida')" disabled>
+            <span class="icon">■</span> Saída
+          </button>
+        </div>
+      </div>
+
+      <div class="historico-card">
+        <h2>Registros de hoje</h2>
+        <div id="historico-lista">
+          <p class="vazio">Nenhum registro ainda.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
